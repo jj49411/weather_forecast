@@ -27,10 +27,10 @@ class Search extends Component {
   render() {
     const { placeholder, value } = this.state
     return(
-      <div>
+      <div className='search-box'>
         <form onSubmit={this.handleSubmit}>
           <label className='city'>
-            CITY:
+            CITY :
             <input 
               className='search-bar'
               type='text'
