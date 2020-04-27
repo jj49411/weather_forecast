@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow} from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import Search from '../Search/Search'
 
@@ -27,4 +27,22 @@ describe('Search', () => {
     expect(wrapper.find('.submit-button').length).toBe(1)
   })
 
+  it('should submit the form when clicked on submit button', () => {
+    const onSubmitSpy = jest.fn()
+    wrapper = mount(
+      <form onSubmit={onSubmitSpy} />
+    )
+    wrapper.find('form').simulate('submit')
+    expect(onSubmitSpy).toHaveBeenCalled()
+  })
+
+  it('should target the input when the value is changed', () => {
+    wrapper.find('.search-bar').simulate('change', {
+      target: { value: 'Tokyo' }
+    })
+    expect(wrapper.find('.search-bar').props().value).toEqual('Tokyo')
+  })
+
 })
+
+
