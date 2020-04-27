@@ -25,6 +25,7 @@ class Search extends Component {
   }
   
   render() {
+    const { placeholder, value } = this.state
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -33,8 +34,8 @@ class Search extends Component {
             <input 
               className='search-bar'
               type='text'
-              value={this.state.value}
-              placeholder={this.state.placeholder}
+              value={value}
+              placeholder={placeholder}
               onChange={this.handleChange}
             />
           </label>
