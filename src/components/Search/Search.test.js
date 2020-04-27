@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import Search from '../Search/Search'
+import Result from '../Result/Result'
 
 describe('Search', () => {
 
@@ -41,6 +42,10 @@ describe('Search', () => {
       target: { value: 'Tokyo' }
     })
     expect(wrapper.find('.search-bar').props().value).toEqual('Tokyo')
+  })
+
+  it('should render the Result Component', () => {
+    expect(wrapper.containsMatchingElement(<Result />)).toEqual(true);
   })
 
 })

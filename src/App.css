@@ -30,6 +30,10 @@ h1 {
   font-size: 15px;
 }
 
+.search-bar:focus { 
+  outline: none; 
+}
+
 .submit-button {
   padding: 3px 3px;
   margin-left: 15px;
@@ -44,4 +48,8 @@ h1 {
 .submit-button:hover {
   background-color: lightblue;
   color: white;
+}
+
+.submit-button:focus { 
+  outline: none; 
 }

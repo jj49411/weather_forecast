@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import '../../App.css'
 
+import Result from '../Result/Result'
+
 class Search extends Component {
 
   constructor(props) {
@@ -42,6 +44,7 @@ class Search extends Component {
           <input 
             className='submit-button' type='submit' value='Go'/>
         </form>
+        <Result />
       </div>
     )
   }
