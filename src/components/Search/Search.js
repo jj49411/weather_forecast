@@ -13,12 +13,14 @@ class Search extends Component {
       value: '',
       location: '',
       lat: '',
-      long: ''
+      long: '',
+      result: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.fetch = this.fetch.bind(this)
+    this.fetchGeo = this.fetchGeo.bind(this)
+    this.fetchWeather = this.fetchWeather.bind(this)
   }
 
   handleChange = e => {
@@ -28,12 +30,11 @@ class Search extends Component {
   }
 
   handleSubmit = e => {
-    this.fetch(this.state.value)
+    this.fetchGeo(this.state.value)
     e.preventDefault()
   }
 
-  fetch(value) {
-    // var api_key = process.env.API_KEY;
+  fetchGeo(value) {
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${value}.json?access_token=pk.eyJ1Ijoiamo0OTQxMSIsImEiOiJjazhiZDl6M2wwN2hsM2VrYXM1cHc5djNhIn0.ElasCKxGyRHlKrnYufqg1A&limit=1`
     axios.get(url)
     .then(response => {
@@ -45,12 +46,31 @@ class Search extends Component {
         lat: lat,
         long: long
       })
+      this.fetchWeather(lat, long)
+    })
+
+    
+  }
+
+  fetchWeather(lat, long) {
+    const url = `https://api.darksky.net/forecast/5d21d057806d759017a1a2a10f37b1af/${lat},${long}?units=si`
+    axios.get(url)
+    .then(response => {
+      const summary = response.data.currently.summary
+      const temperature = response.data.currently.temperature
+      const chanceOfRain = response.data.currently.precipIntensity
+      const weekForecast = response.data.daily.summary
+      this.setState({
+        result: { summary, temperature, chanceOfRain, weekForecast }
+      })
     })
   }
 
+
+
   
   render() {
-    const { placeholder, value } = this.state
+    const { placeholder, value, location, result } = this.state
     return(
       <div className='search-box'>
         <form onSubmit={this.handleSubmit}>
@@ -67,7 +87,7 @@ class Search extends Component {
           <input 
             className='submit-button' type='submit' value='Go'/>
         </form>
-        <Result value={this.state.location}/>
+        <Result location={location} summary={result.summary} temperature={result.temperature} chanceOfRain={result.chanceOfRain} weekForecast={result.weekForecast}/>
       </div>
     )
   }
