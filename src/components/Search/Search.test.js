@@ -1,12 +1,22 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
+import axios from 'axios'
 
 import Search from '../Search/Search'
 import Result from '../Result/Result'
 
+jest.mock('axios')
+
 describe('Search', () => {
 
   let wrapper
+  const dataMock = {
+    location: 'london', 
+    lat: '111', 
+    long: '222'
+  }
+
+  axios.get.mockImplementationOnce(() => Promise.resolve({ data: dataMock }))
 
   beforeEach(() => {
     wrapper = shallow(<Search />)
@@ -46,6 +56,13 @@ describe('Search', () => {
 
   it('should render the Result Component', () => {
     expect(wrapper.containsMatchingElement(<Result />)).toEqual(true);
+  })
+
+  it('should fetch geocaoding data from API', async () => {
+    const search = new Search()
+    search.fetch('london')
+    expect(axios.get).toHaveBeenCalled()
+    expect(axios.get).toHaveBeenCalledWith('https://api.mapbox.com/geocoding/v5/mapbox.places/london.json?access_token=pk.eyJ1Ijoiamo0OTQxMSIsImEiOiJjazhiZDl6M2wwN2hsM2VrYXM1cHc5djNhIn0.ElasCKxGyRHlKrnYufqg1A&limit=1')
   })
 
 })
