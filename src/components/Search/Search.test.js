@@ -15,13 +15,23 @@ describe('Search', () => {
     lat: '111', 
     long: '222'
   }
+  const weatherMock = {
+    "summary": "Drizzle today and Tuesday.",
+    "precipIntensity": 0,
+    "temperature": 15
+  }
 
   axios.get.mockImplementationOnce(() => Promise.resolve({ data: dataMock }))
+  axios.get.mockImplementationOnce(() => Promise.resolve({ data: weatherMock }))
 
   beforeEach(() => {
     wrapper = shallow(<Search />)
   })
 
+  afterEach(() => {
+    axios.mockClear()
+  })
+  
   it('should render correctly', () => {
     expect(wrapper.exists()).toBe(true)
   })
@@ -60,11 +70,18 @@ describe('Search', () => {
 
   it('should fetch geocaoding data from API', async () => {
     const search = new Search()
-    search.fetch('london')
+    search.fetchGeo('london')
     expect(axios.get).toHaveBeenCalled()
     expect(axios.get).toHaveBeenCalledWith('https://api.mapbox.com/geocoding/v5/mapbox.places/london.json?access_token=pk.eyJ1Ijoiamo0OTQxMSIsImEiOiJjazhiZDl6M2wwN2hsM2VrYXM1cHc5djNhIn0.ElasCKxGyRHlKrnYufqg1A&limit=1')
   })
 
+
+  it('should fetch weather data from API', async () => {
+    const search = new Search()
+    search.fetchWeather('13', '14')
+    expect(axios.get).toHaveBeenCalled()
+    expect(axios.get).toHaveBeenCalledWith('https://api.darksky.net/forecast/5d21d057806d759017a1a2a10f37b1af/13,14?units=si')
+  })
 })
 
 
