@@ -10,6 +10,8 @@ jest.mock('axios')
 describe('Search', () => {
 
   let wrapper
+  let search
+
   const dataMock = {
     location: 'london', 
     lat: '111', 
@@ -26,6 +28,7 @@ describe('Search', () => {
 
   beforeEach(() => {
     wrapper = shallow(<Search />)
+    search = new Search()
   })
 
   afterEach(() => {
@@ -69,7 +72,6 @@ describe('Search', () => {
   })
 
   it('should fetch geocaoding data from API', async () => {
-    const search = new Search()
     search.fetchGeo('london')
     expect(axios.get).toHaveBeenCalled()
     expect(axios.get).toHaveBeenCalledWith('https://api.mapbox.com/geocoding/v5/mapbox.places/london.json?access_token=pk.eyJ1Ijoiamo0OTQxMSIsImEiOiJjazhiZDl6M2wwN2hsM2VrYXM1cHc5djNhIn0.ElasCKxGyRHlKrnYufqg1A&limit=1')
@@ -77,11 +79,11 @@ describe('Search', () => {
 
 
   it('should fetch weather data from API', async () => {
-    const search = new Search()
     search.fetchWeather('13', '14')
     expect(axios.get).toHaveBeenCalled()
     expect(axios.get).toHaveBeenCalledWith('https://api.darksky.net/forecast/5d21d057806d759017a1a2a10f37b1af/13,14?units=si')
   })
+  
 })
 
 

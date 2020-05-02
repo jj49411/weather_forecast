@@ -41,11 +41,7 @@ class Search extends Component {
       const location = response.data.features[0].place_name
       const lat = response.data.features[0].center[1]
       const long = response.data.features[0].center[0]
-      this.setState({ 
-        location: location,
-        lat: lat,
-        long: long
-      })
+      this.setState({ location, lat, long })
       this.fetchWeather(lat, long)
     })
 
