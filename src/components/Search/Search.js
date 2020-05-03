@@ -14,7 +14,8 @@ class Search extends Component {
       location: '',
       lat: '',
       long: '',
-      result: {}
+      result: {},
+      submitted: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -31,6 +32,9 @@ class Search extends Component {
 
   handleSubmit = e => {
     this.fetchGeo(this.state.value)
+    this.setState({
+      submitted: true
+    })
     e.preventDefault()
   }
 
@@ -66,23 +70,27 @@ class Search extends Component {
 
   
   render() {
-    const { placeholder, value, location, result } = this.state
+    const { placeholder, value, location, result, submitted } = this.state
+    
     return(
       <div className='search-box'>
-        <form onSubmit={this.handleSubmit}>
-          <label className='city'>
-            CITY :
+        {!submitted ? (
+          <form onSubmit={this.handleSubmit}>
+            <label className='city'>
+              CITY :
+              <input 
+                className='search-bar'
+                type='text'
+                value={value}
+                placeholder={placeholder}
+                onChange={this.handleChange}
+              />
+            </label>
             <input 
-              className='search-bar'
-              type='text'
-              value={value}
-              placeholder={placeholder}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input 
-            className='submit-button' type='submit' value='Go'/>
-        </form>
+              className='submit-button' type='submit' value='Go'/>
+          </form>
+        ) : null}
+      
         <Result location={location} summary={result.summary} temperature={result.temperature} chanceOfRain={result.chanceOfRain} weekForecast={result.weekForecast}/>
       </div>
     )

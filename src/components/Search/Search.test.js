@@ -77,13 +77,17 @@ describe('Search', () => {
     expect(axios.get).toHaveBeenCalledWith('https://api.mapbox.com/geocoding/v5/mapbox.places/london.json?access_token=pk.eyJ1Ijoiamo0OTQxMSIsImEiOiJjazhiZDl6M2wwN2hsM2VrYXM1cHc5djNhIn0.ElasCKxGyRHlKrnYufqg1A&limit=1')
   })
 
-
   it('should fetch weather data from API', async () => {
     search.fetchWeather('13', '14')
     expect(axios.get).toHaveBeenCalled()
     expect(axios.get).toHaveBeenCalledWith('https://api.darksky.net/forecast/5d21d057806d759017a1a2a10f37b1af/13,14?units=si')
   })
-  
+
+  it('should hide the search bar after submit', () => {
+    wrapper.setState({ submitted: true })
+    expect(wrapper.find('.submit-button').length).toBe(0)
+  })
+
 })
 
 
