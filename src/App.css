@@ -53,3 +53,17 @@ h1 {
 .submit-button:focus { 
   outline: none; 
 }
+
+.result-box {
+  width: 600px;
+}
+
+.left-div {
+  width: 50%;
+  float: left;
+}
+
+.right-div {
+  width: 50%;
+  float: right;
+}

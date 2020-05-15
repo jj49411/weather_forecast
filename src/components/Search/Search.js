@@ -90,8 +90,10 @@ class Search extends Component {
               className='submit-button' type='submit' value='Go'/>
           </form>
         ) : null}
-      
+
+        {submitted ? (
         <Result location={location} summary={result.summary} temperature={result.temperature} chanceOfRain={result.chanceOfRain} weekForecast={result.weekForecast}/>
+        ) : null}
       </div>
     )
   }
