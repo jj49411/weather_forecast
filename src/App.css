@@ -55,15 +55,25 @@ h1 {
 }
 
 .result-box {
-  width: 600px;
+  margin-top: 50px;
+  width: 800px;
 }
 
 .left-div {
-  width: 50%;
+  width: 300px;
   float: left;
+  margin-left: -40px;
 }
 
 .right-div {
-  width: 50%;
+  margin-top: 40px;
+  width: 470px;
   float: right;
+  text-align: left;
+
+}
+
+.temperature {
+  font-size: 50px;
+
 }
