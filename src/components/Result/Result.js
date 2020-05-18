@@ -4,13 +4,23 @@ import '../../App.css'
 
 class Result extends Component {
 
+  constructor(props) {
+    super(props)
+    this.toWhole = this.toWhole.bind(this)
+
+  }
+
+  toWhole() {
+    return Math.round(this.props.temperature)
+  }
 
   render() {
     return(
       <div className='result-box'>
         <div className='left-div'>
+          <p className='temperature'>{this.toWhole()}°C</p>
           <p>{this.props.location}</p>
-          <p>{this.props.temperature}°C</p>
+          
         </div>
         <div className='right-div'>
           <p>Summary: {this.props.summary}</p>
