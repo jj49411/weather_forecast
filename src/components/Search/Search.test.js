@@ -68,6 +68,7 @@ describe('Search', () => {
   })
 
   it('should render the Result Component', () => {
+    wrapper.setState({ submitted: true })
     expect(wrapper.containsMatchingElement(<Result />)).toEqual(true);
   })
 
