@@ -8,9 +8,6 @@ describe('Result', () => {
   let wrapper
 
   beforeEach(() => {
-    const props = {
-      
-    }
     wrapper = shallow(<Result />)
   })
 
@@ -29,5 +26,14 @@ describe('Result', () => {
     wrapper = shallow(<Result {...props}/>)
     expect(wrapper.instance().toWhole()).toBe(15)
   })
+
+  it('should only show city name in capital letter in results', () => {
+    const props = {
+      location: 'London, UK'
+    }
+    wrapper = shallow(<Result {...props}/>)
+    expect(wrapper.instance().showCity()).toBe('LONDON')
+  })
+  
 })
 

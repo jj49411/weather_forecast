@@ -55,7 +55,7 @@ h1 {
 }
 
 .result-box {
-  margin-top: 50px;
+  margin-top: 40px;
   width: 800px;
 }
 
@@ -70,10 +70,25 @@ h1 {
   width: 470px;
   float: right;
   text-align: left;
+  outline: 2px solid lightgrey;
+  padding: 10px 20px;
 
 }
 
 .temperature {
-  font-size: 50px;
-
+  font-size: 70px;
+  margin-bottom: -40px;
+  font-weight: 700;
 }
+
+h2 {
+  color: lightblue;
+  font-size: 50px;
+  margin-top: 60px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* .location-city {
+  margin-top: -20px;
+} */
