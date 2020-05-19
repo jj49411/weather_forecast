@@ -23,6 +23,7 @@ class Search extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.fetchGeo = this.fetchGeo.bind(this)
     this.fetchWeather = this.fetchWeather.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
   handleChange = e => {
@@ -68,7 +69,12 @@ class Search extends Component {
     })
   }
 
-
+  reset() {
+    this.setState({ 
+      submitted: false,
+      value: '' 
+    })
+  }
 
   
   render() {
@@ -94,7 +100,10 @@ class Search extends Component {
         ) : null}
 
         {submitted && !isLoading  ? (
-        <Result location={location} summary={result.summary} temperature={result.temperature} chanceOfRain={result.chanceOfRain} weekForecast={result.weekForecast}/>
+          <div>
+            <Result location={location} summary={result.summary} temperature={result.temperature} chanceOfRain={result.chanceOfRain} weekForecast={result.weekForecast}/>
+            <button type='button' className='reset-button btn-light' onClick={this.reset}>Start Again</button>
+          </div>
         ) : null}
       </div>
     )

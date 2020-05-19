@@ -89,3 +89,13 @@ h2 {
   text-align: center;
 }
 
+.reset-button {
+  padding: 10px 30px;
+  font-size: 60;
+  border-color: #eeeeee;
+}
+
+.reset-button:focus {
+  outline: none;
+  box-shadow:none;
+}

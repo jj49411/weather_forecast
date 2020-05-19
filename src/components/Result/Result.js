@@ -33,6 +33,7 @@ class Result extends Component {
           <p>Forecast: {this.props.weekForecast}</p>
         </div>
         
+        
       </div>
     )
   }

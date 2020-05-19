@@ -68,7 +68,7 @@ describe('Search', () => {
   })
 
   it('should render the Result Component', () => {
-    wrapper.setState({ submitted: true })
+    wrapper.setState({ submitted: true, isLoading: false })
     expect(wrapper.containsMatchingElement(<Result />)).toEqual(true);
   })
 
@@ -87,6 +87,11 @@ describe('Search', () => {
   it('should hide the search bar after submit', () => {
     wrapper.setState({ submitted: true })
     expect(wrapper.find('.submit-button').length).toBe(0)
+  })
+
+  it('should show a reset button on result page', () => {
+    wrapper.setState({ submitted: true, isLoading: false })
+    expect(wrapper.find('.reset-button').length).toBe(1)
   })
 
 })
