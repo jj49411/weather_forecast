@@ -70,7 +70,7 @@ h1 {
   width: 470px;
   float: right;
   text-align: left;
-  outline: 2px solid lightgrey;
+  outline: 3px solid whitesmoke;
   padding: 10px 20px;
 
 }
@@ -89,6 +89,3 @@ h2 {
   text-align: center;
 }
 
-/* .location-city {
-  margin-top: -20px;
-} */

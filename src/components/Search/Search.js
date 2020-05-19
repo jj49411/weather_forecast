@@ -15,7 +15,8 @@ class Search extends Component {
       lat: '',
       long: '',
       result: {},
-      submitted: false
+      submitted: false,
+      isLoading: true
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -61,7 +62,8 @@ class Search extends Component {
       const chanceOfRain = response.data.currently.precipIntensity
       const weekForecast = response.data.daily.summary
       this.setState({
-        result: { summary, temperature, chanceOfRain, weekForecast }
+        result: { summary, temperature, chanceOfRain, weekForecast },
+        isLoading: false
       })
     })
   }
@@ -70,7 +72,7 @@ class Search extends Component {
 
   
   render() {
-    const { placeholder, value, location, result, submitted } = this.state
+    const { placeholder, value, location, result, submitted, isLoading } = this.state
     
     return(
       <div className='search-box'>
@@ -91,7 +93,7 @@ class Search extends Component {
           </form>
         ) : null}
 
-        {submitted ? (
+        {submitted && !isLoading  ? (
         <Result location={location} summary={result.summary} temperature={result.temperature} chanceOfRain={result.chanceOfRain} weekForecast={result.weekForecast}/>
         ) : null}
       </div>
