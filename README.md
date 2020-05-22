@@ -18,7 +18,6 @@
 - Jest
 - Enzyme
 
-
 ### Tools
 
 ## User Stories
