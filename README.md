@@ -35,3 +35,17 @@ As a user
 So I can know the weather for the week
 I would like to see weekly forecast
 ```
+
+### Progress Report
+
+To solve H10 error when deploy to heroku
+
+- Run `$ npm add serve --save`
+- Add scripts in package.json
+```
+"scripts": {
+    "dev": "react-scripts start",
+    "heroku-postbuild": "npm run build",
+    "start": "serve -s build",
+  }
+```
