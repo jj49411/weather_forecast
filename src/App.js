@@ -10,6 +10,7 @@ class App extends Component {
         <h1>WEATHER FORECAST</h1>
         <Search />
       </div>
+      
     )
   }
 }

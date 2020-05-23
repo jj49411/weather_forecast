@@ -1,10 +1,12 @@
 # Weather Forecast
+A web application that allows users to type in a city and see the weather forecast, including temperature, summary, precipitation and weekly forecast. Two external APIs are used: Geocoding API [Mapbox](https://www.mapbox.com/) and Weather API [DarkSky](http://darksky.net/dev).
 
 ## Getting Started
 
 - Clone the repo
 - Run `$ npm install`
-- Run `$ npm start` to open the app on the browser
+- Run `$ npm start`
+- Visit `http://localhost:8000 `
 
 
 ## Running Tests
@@ -18,7 +20,6 @@
 - Jest
 - Enzyme
 
-### Tools
 
 ## User Stories
 
@@ -36,7 +37,7 @@ So I can know the weather for the week
 I would like to see weekly forecast
 ```
 
-### Progress Report
+## Progress Report
 
 To solve H10 error when deploy to heroku
 

@@ -56,6 +56,7 @@ class Search extends Component {
 
   fetchWeather(lat, long) {
     const url = `https://api.darksky.net/forecast/5d21d057806d759017a1a2a10f37b1af/${lat},${long}?units=si`
+
     axios.get(url)
     .then(response => {
       const summary = response.data.currently.summary
