@@ -1,6 +1,9 @@
 # Weather Forecast
 A web application that allows users to type in a city and see the weather forecast, including temperature, summary, precipitation and weekly forecast. Two external APIs are used: Geocoding API [Mapbox](https://www.mapbox.com/) and Weather API [DarkSky](http://darksky.net/dev).
 
+## Demo
+![demo](https://media.giphy.com/media/SqlC3MCo3K879lDewU/giphy.gif)
+
 ## Getting Started
 
 - Clone the repo
