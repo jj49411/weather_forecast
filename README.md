@@ -1,4 +1,4 @@
-# Weather Forecast
+# Weather App
 A web application that allows users to type in a city and see the weather forecast, including temperature, summary, precipitation and weekly forecast. Two external APIs are used: Geocoding API [Mapbox](https://www.mapbox.com/) and Weather API [DarkSky](http://darksky.net/dev).
 
 ## Demo
@@ -11,10 +11,15 @@ A web application that allows users to type in a city and see the weather foreca
 - Run `$ npm start`
 - Visit `http://localhost:8000 `
 
-
 ## Running Tests
 
 - Run `$ npm test` 
+
+## Features
+
+- User can enter a city name and submit the form
+- User can see weather forecast as results
+- User can click on restart button
 
 ## Technologies Used
 
